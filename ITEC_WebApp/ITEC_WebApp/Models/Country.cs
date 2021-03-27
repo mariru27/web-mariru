@@ -8,6 +8,7 @@ namespace ITEC_WebApp.Models
         public int IdCountry { get; set; }
         public string Name { get; set; }
         public string Details { get; set; }
+        public Covid Covid { get; set; }
 
 
 
