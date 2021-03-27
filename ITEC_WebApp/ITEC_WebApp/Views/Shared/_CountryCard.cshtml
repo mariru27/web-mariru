@@ -7,6 +7,6 @@
     <div class="card-body">
         <h5 class="card-title">About Country @Model.Name</h5>
         <p class="card-text">@Model.Details</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a asp-action="FindHotel" asp-controller="ExploreCities" asp-route-id="@Model.IdCountry" class="btn btn-primary">Find hotel</a>
     </div>
 </div>
