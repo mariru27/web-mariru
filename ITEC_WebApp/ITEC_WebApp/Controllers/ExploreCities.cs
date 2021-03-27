@@ -14,22 +14,22 @@ namespace ITEC_WebApp.Controllers
         }
         public IActionResult FindHotel(int id)
         {
-            var a = _context.City.Where(con => con.IdCity == id).Join(_context.Hotel,
+            var hotels = _context.City.Where(con => con.IdCity == id).Join(_context.Hotel,
                 c => c.IdCity,
                 cy => cy.City.IdCity,
                 (c, cy) => new Hotel { City = cy.City, Rooms = cy.Rooms, Name = cy.Name, Description = cy.Description, IdHotel = cy.IdHotel, Stars = cy.Stars }
                 ).ToList();
-            return View(a);
+            return View(hotels);
         }
 
         public IActionResult Rooms(int id)
         {
-            var a = _context.Hotel.Where(a => a.IdHotel == id).Join(
+            var rooms = _context.Hotel.Where(a => a.IdHotel == id).Join(
                  _context.Room,
                  a => a.IdHotel,
                  b => b.Hotel.IdHotel,
-                 (a, b) => new Hotel { City = a.City, Description = a.Description, IdHotel = a.IdHotel, Name = a.Name, Rooms = a.Rooms, Stars = a.Stars }).ToList();
-            return View();
+                 (a, b) => new Room { RoomNumber = b.RoomNumber, CheckIn = b.CheckIn, CheckOut = b.CheckOut, Description = b.Description, Hotel = b.Hotel, IdRoom = b.IdRoom }).ToList();
+            return View(rooms);
         }
     }
 }
