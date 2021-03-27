@@ -1,28 +1,31 @@
-﻿using ITEC_WebApp.Data;
-using ITEC_WebApp.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using ITEC_WebApp.Data;
+using ITEC_WebApp.Models;
 
 namespace ITEC_WebApp.Controllers
 {
-    public class UsersController : Controller
+    public class CountriesController : Controller
     {
         private readonly ContextITEC _context;
 
-        public UsersController(ContextITEC context)
+        public CountriesController(ContextITEC context)
         {
             _context = context;
         }
 
-        // GET: Users
+        // GET: Countries
         public async Task<IActionResult> Index()
         {
-            return View(await _context.User.ToListAsync());
+            return View(await _context.Country.ToListAsync());
         }
 
-        // GET: Users/Details/5
+        // GET: Countries/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -30,39 +33,39 @@ namespace ITEC_WebApp.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
-                .FirstOrDefaultAsync(m => m.IdUser == id);
-            if (user == null)
+            var country = await _context.Country
+                .FirstOrDefaultAsync(m => m.IdCountry == id);
+            if (country == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(country);
         }
 
-        // GET: Users/Create
+        // GET: Countries/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Users/Create
+        // POST: Countries/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdUser,Username,Password,ConfirmPassword")] User user)
+        public async Task<IActionResult> Create([Bind("IdCountry,Name,Details")] Country country)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
+                _context.Add(country);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(country);
         }
 
-        // GET: Users/Edit/5
+        // GET: Countries/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -70,22 +73,22 @@ namespace ITEC_WebApp.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User.FindAsync(id);
-            if (user == null)
+            var country = await _context.Country.FindAsync(id);
+            if (country == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(country);
         }
 
-        // POST: Users/Edit/5
+        // POST: Countries/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdUser,Username,Password,ConfirmPassword")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCountry,Name,Details")] Country country)
         {
-            if (id != user.IdUser)
+            if (id != country.IdCountry)
             {
                 return NotFound();
             }
@@ -94,12 +97,12 @@ namespace ITEC_WebApp.Controllers
             {
                 try
                 {
-                    _context.Update(user);
+                    _context.Update(country);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.IdUser))
+                    if (!CountryExists(country.IdCountry))
                     {
                         return NotFound();
                     }
@@ -110,10 +113,10 @@ namespace ITEC_WebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(country);
         }
 
-        // GET: Users/Delete/5
+        // GET: Countries/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -121,30 +124,30 @@ namespace ITEC_WebApp.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
-                .FirstOrDefaultAsync(m => m.IdUser == id);
-            if (user == null)
+            var country = await _context.Country
+                .FirstOrDefaultAsync(m => m.IdCountry == id);
+            if (country == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(country);
         }
 
-        // POST: Users/Delete/5
+        // POST: Countries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var user = await _context.User.FindAsync(id);
-            _context.User.Remove(user);
+            var country = await _context.Country.FindAsync(id);
+            _context.Country.Remove(country);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        private bool CountryExists(int id)
         {
-            return _context.User.Any(e => e.IdUser == id);
+            return _context.Country.Any(e => e.IdCountry == id);
         }
     }
 }
