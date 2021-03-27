@@ -7,6 +7,8 @@ namespace ITEC_WebApp.Models
     {
         [Key]
         public int IdCity { get; set; }
+        [Required]
+        [Display(Name = "City Name")]
         public string Name { get; set; }
         public Weather Weather { get; set; }
         public List<Hotel> Hotels { get; set; }

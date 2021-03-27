@@ -7,6 +7,8 @@ namespace ITEC_WebApp.Models
     {
         [Key]
         public int IdHotel { get; set; }
+        [Required]
+        [Display(Name = "Hotel Name")]
         public string Name { get; set; }
         public int Stars { get; set; }
         public string Description { get; set; }

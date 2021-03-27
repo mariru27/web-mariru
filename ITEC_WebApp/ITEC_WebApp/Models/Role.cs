@@ -8,6 +8,8 @@ namespace ITEC_WebApp.Models
     {
         [Key]
         public int IdRole { get; set; }
+        [Required]
+        [Display(Name = "Role")]
         public string NameRole { get; set; }
         public List<User> Users { get; set; }
     }

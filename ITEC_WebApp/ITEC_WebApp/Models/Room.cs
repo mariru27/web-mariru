@@ -7,6 +7,8 @@ namespace ITEC_WebApp.Models
     {
         [Key]
         public int IdRoom { get; set; }
+        [Required]
+        [Display(Name = "Room Number")]
         public int RoomNumber { get; set; }
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
