@@ -29,6 +29,18 @@ namespace ITEC_WebApp.Controllers
             {
                 rooms = _context.Room.Where(a => a.CheckIn >= searchModel.CheckIn && a.CheckOut <= searchModel.CheckOut).ToList();
             }
+            {
+                if (searchModel.CheckOut != null)
+                {
+                    rooms = _context.Room.Where(a => a.CheckIn >= searchModel.CheckIn).ToList();
+
+                }
+                if (searchModel.CheckIn != null)
+                {
+                    rooms = _context.Room.Where(a => a.CheckOut <= searchModel.CheckOut).ToList();
+
+                }
+            }
 
 
             return View();
