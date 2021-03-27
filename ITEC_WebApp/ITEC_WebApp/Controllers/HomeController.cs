@@ -1,8 +1,10 @@
 ﻿using ITEC_WebApp.Data;
 using ITEC_WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace ITEC_WebApp.Controllers
 {
@@ -15,6 +17,11 @@ namespace ITEC_WebApp.Controllers
         {
             _logger = logger;
             _context = context;
+        }
+
+        public async Task<IActionResult> Countries()
+        {
+            return View(await _context.Country.ToListAsync());
         }
 
         public IActionResult Index()
