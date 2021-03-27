@@ -4,6 +4,6 @@
     {
         public int IdWheather { get; set; }
         public string Details { get; set; }
-        public string Zone { get; set; }
+        public City City { get; set; }
     }
 }

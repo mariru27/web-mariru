@@ -10,6 +10,7 @@ namespace ITEC_WebApp.Models
         public DateTime CheckOut { get; set; }
 
         public string Description { get; set; }
+        public Hotel Hotel { get; set; }
 
     }
 }
