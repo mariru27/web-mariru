@@ -4,6 +4,7 @@ using ITEC_WebApp.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -25,22 +26,32 @@ namespace ITEC_WebApp.Controllers
         public IActionResult Search(SearchModel searchModel)
         {
             List<Room> rooms = new List<Room>();
+            DateTime date = new DateTime();
             if (searchModel.CheckOut != null && searchModel.CheckIn != null)
             {
-                rooms = _context.Room.Where(a => a.CheckIn >= searchModel.CheckIn && a.CheckOut <= searchModel.CheckOut).ToList();
+                rooms = _context.Room.Where(a => a.CheckIn <= searchModel.CheckIn && a.CheckOut >= searchModel.CheckOut).ToList();
             }
+            else
             {
-                if (searchModel.CheckOut != null)
+                if (searchModel.CheckIn != date)
                 {
-                    rooms = _context.Room.Where(a => a.CheckIn >= searchModel.CheckIn).ToList();
+                    rooms = _context.Room.Where(a => a.CheckOut >= searchModel.CheckOut).ToList();
 
                 }
-                if (searchModel.CheckIn != null)
+                if (searchModel.CheckOut != date)
                 {
-                    rooms = _context.Room.Where(a => a.CheckOut <= searchModel.CheckOut).ToList();
+                    rooms = _context.Room.Where(a => a.CheckIn <= searchModel.CheckIn).ToList();
 
                 }
             }
+
+            //if (searchModel.Hotel != null)
+            //{
+            //}
+            //else
+            //{
+
+            //}
 
 
             return View();
