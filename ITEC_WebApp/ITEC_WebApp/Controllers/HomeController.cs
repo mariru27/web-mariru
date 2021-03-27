@@ -4,6 +4,7 @@ using ITEC_WebApp.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,12 +24,19 @@ namespace ITEC_WebApp.Controllers
 
         public IActionResult Search(SearchModel searchModel)
         {
+            List<Room> rooms = new List<Room>();
+            if (searchModel.CheckOut != null && searchModel.CheckIn != null)
+            {
+                rooms = _context.Room.Where(a => a.CheckIn >= searchModel.CheckIn && a.CheckOut <= searchModel.CheckOut).ToList();
+            }
+
 
             return View();
         }
 
         public IActionResult Filter()
         {
+
             return View();
         }
         public async Task<IActionResult> Countries()
