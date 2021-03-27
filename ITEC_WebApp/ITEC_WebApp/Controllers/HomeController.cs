@@ -23,6 +23,15 @@ namespace ITEC_WebApp.Controllers
 
         public IActionResult Search(SearchModel searchModel)
         {
+            //if (searchModel.CheckIn != null || searchModel.CheckOut != null || searchModel.City != null || searchModel.Country != null)
+            //{
+
+            //}
+            return View();
+        }
+
+        public IActionResult Filter()
+        {
             return View();
         }
         public async Task<IActionResult> Countries()
