@@ -10,5 +10,6 @@ namespace ITEC_WebApp.Models
         public string Details { get; set; }
 
 
+
     }
 }
