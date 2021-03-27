@@ -14,18 +14,17 @@ namespace ITEC_WebApp.Controllers
         }
         public IActionResult FindHotel(int id)
         {
-            Country country = _context.Country.Where(c => c.IdCountry == id).SingleOrDefault();
-            //var a = _context.Country.Join(_context.City,
-            //    c => c.Cities,
-            //    cy => cy.IdCity,
-            //    (c, cy) => new City { Hotels = cy.Hotels, IdCity = cy.IdCity, Name = cy.Name, Weather = cy.Weather }
-            //    );
-            //_context.Country.Join(_context.City,
-            //    a => a.IdCountry,
-            //    b => b.Country.IdCountry)
+            var a = _context.Country.Where(con => con.IdCountry == id).Join(_context.City,
+                c => c.IdCountry,
+                cy => cy.Country.IdCountry,
+                (c, cy) => new City { Hotels = cy.Hotels, IdCity = cy.IdCity, Name = cy.Name, Weather = cy.Weather }
+                ).ToList();
 
 
-            return View();
+
+
+
+            return View(a);
         }
     }
 }

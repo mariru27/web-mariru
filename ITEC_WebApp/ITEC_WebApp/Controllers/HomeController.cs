@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ITEC_WebApp.Controllers
@@ -22,6 +23,15 @@ namespace ITEC_WebApp.Controllers
         public async Task<IActionResult> Countries()
         {
             return View(await _context.Country.ToListAsync());
+        }
+
+        public IActionResult Cities(int id)
+        {
+            return View(_context.Country.Where(con => con.IdCountry == id).Join(_context.City,
+                c => c.IdCountry,
+                cy => cy.Country.IdCountry,
+                (c, cy) => new City { Hotels = cy.Hotels, IdCity = cy.IdCity, Name = cy.Name, Weather = cy.Weather }
+                ).ToList());
         }
 
         public IActionResult Index()
