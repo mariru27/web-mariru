@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Hotel>
+
+@{
+    ViewData["Title"] = "Hotels";
+}
+
+<h1>Countries</h1>
+
+
+@foreach (var hotel in Model)
+{
+    <partial name="_HotelCard" model="hotel" />
+    <br />
+}
