@@ -26,13 +26,13 @@ namespace ITEC_WebApp.Data
             modelBuilder.Entity<Country>().HasOne(e => e.Covid).WithOne(e => e.Country).HasForeignKey<Covid>(e => e.IdCovid);
 
             modelBuilder.Entity<Test>().ToTable("Test");
-            modelBuilder.Entity<Test>().ToTable("City");
-            modelBuilder.Entity<Test>().ToTable("Country");
-            modelBuilder.Entity<Test>().ToTable("Covid");
-            modelBuilder.Entity<Test>().ToTable("Hotel");
-            modelBuilder.Entity<Test>().ToTable("Room");
-            modelBuilder.Entity<Test>().ToTable("User");
-            modelBuilder.Entity<Test>().ToTable("Weather");
+            modelBuilder.Entity<City>().ToTable("City");
+            modelBuilder.Entity<Country>().ToTable("Country");
+            modelBuilder.Entity<Covid>().ToTable("Covid");
+            modelBuilder.Entity<Hotel>().ToTable("Hotel");
+            modelBuilder.Entity<Room>().ToTable("Room");
+            modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<Weather>().ToTable("Weather");
         }
     }
 }
