@@ -1,0 +1,10 @@
+﻿@model City
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Hotel name: @Model.Name</h5>
+        <p class="card-text">Hotel numbers in city : @Model.Hotels.Count()</p>
+        <p class="card-text">Weather : @Model.Weather.Details</p>
+        <a asp-action="Cities" asp-route-id="@Model.IdCity" class="btn btn-primary">Find hotel</a>
+    </div>
+</div>
