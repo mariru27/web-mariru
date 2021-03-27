@@ -12,6 +12,7 @@ namespace ITEC_WebApp.Models
         public string Name { get; set; }
         public Weather Weather { get; set; }
         public List<Hotel> Hotels { get; set; }
+        public Country Country { get; set; }
 
     }
 }
