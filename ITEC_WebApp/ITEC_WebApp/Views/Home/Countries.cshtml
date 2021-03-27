@@ -6,8 +6,12 @@
 
 <h1>Countries</h1>
 
+<partial name="_SearchForm"/>
+<br />
 
-@foreach(var country in Model)
+
+
+@foreach (var country in Model)
 {
     <partial name="_CountryCard" model="country" />
     <br />
