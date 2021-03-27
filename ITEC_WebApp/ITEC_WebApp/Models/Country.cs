@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ITEC_WebApp.Models
 {
@@ -10,6 +11,7 @@ namespace ITEC_WebApp.Models
         public string Details { get; set; }
         public Covid Covid { get; set; }
 
+        public List<City> Cities { get; set; }
 
 
     }
