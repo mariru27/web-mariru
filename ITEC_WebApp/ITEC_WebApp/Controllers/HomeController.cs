@@ -22,6 +22,11 @@ namespace ITEC_WebApp.Controllers
 
         public async Task<IActionResult> Countries()
         {
+            var a = _context.Country.Join(_context.Covid,
+                a => a.IdCountry,
+                b => b.Country.IdCountry,
+                (a, b) => new Country { Cities = a.Cities, IdCountry = a.IdCountry, Covid = a.Covid, Details = a.Details, Name = a.Name }
+                ).ToList();
             return View(await _context.Country.ToListAsync());
         }
 
