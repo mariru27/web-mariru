@@ -14,16 +14,11 @@ namespace ITEC_WebApp.Controllers
         }
         public IActionResult FindHotel(int id)
         {
-            var a = _context.Country.Where(con => con.IdCountry == id).Join(_context.City,
-                c => c.IdCountry,
-                cy => cy.Country.IdCountry,
-                (c, cy) => new City { Hotels = cy.Hotels, IdCity = cy.IdCity, Name = cy.Name, Weather = cy.Weather }
+            var a = _context.City.Where(con => con.IdCity == id).Join(_context.Hotel,
+                c => c.IdCity,
+                cy => cy.City.IdCity,
+                (c, cy) => new Hotel { City = cy.City, Rooms = cy.Rooms, Name = cy.Name, Description = cy.Description, IdHotel = cy.IdHotel, Stars = cy.Stars }
                 ).ToList();
-
-
-
-
-
             return View(a);
         }
     }
