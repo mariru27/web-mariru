@@ -45,13 +45,27 @@ namespace ITEC_WebApp.Controllers
                 }
             }
 
-            //if (searchModel.Hotel != null)
-            //{
-            //}
-            //else
-            //{
 
-            //}
+            List<SearchResult> searchResults = new List<SearchResult>();
+            foreach (var room in rooms)
+            {
+                SearchResult searchResult = new SearchResult();
+                searchResult.Room = room;
+
+                searchResult.Hotel = _context.Room.Where(a => a.IdRoom == searchResult.Room.IdRoom).Join(_context.Hotel,
+                    a => a.Hotel.IdHotel,
+                    b => b.IdHotel,
+                    (a, b) => new Hotel { City = b.City, Description = b.Description, IdHotel = b.IdHotel, Rooms = b.Rooms, Name = b.Name, Stars = b.Stars }).SingleOrDefault();
+
+
+                searchResult.City = _context.Hotel.Where(a => a.IdHotel == searchResult.Hotel.IdHotel).Join(_context.City,
+                    a => a.City.IdCity,
+                    b => b.IdCity,
+                    (a, b) => new City { Country = b.Country, IdCity = b.IdCity, Hotels = b.Hotels, Name = b.Name, Weather = b.Weather }
+                    ).SingleOrDefault();
+
+
+            }
 
 
             return View();
