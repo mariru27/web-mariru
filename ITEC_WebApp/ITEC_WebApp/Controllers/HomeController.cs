@@ -64,6 +64,13 @@ namespace ITEC_WebApp.Controllers
                     (a, b) => new City { Country = b.Country, IdCity = b.IdCity, Hotels = b.Hotels, Name = b.Name, Weather = b.Weather }
                     ).SingleOrDefault();
 
+                searchResult.Country = _context.City.Where(a => a.IdCity == searchResult.City.IdCity).Join(
+                    _context.Country,
+                    a => a.Country.IdCountry,
+                    b => b.IdCountry,
+                    (a, b) => new Country { IdCountry = b.IdCountry, Cities = b.Cities, Covid = b.Covid, Details = b.Details, Name = b.Name }).SingleOrDefault();
+
+                searchResults.Add(searchResult);
 
             }
 
