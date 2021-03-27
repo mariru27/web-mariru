@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ITEC_WebApp.Models
 {
     public class Room
     {
+        [Key]
         public int IdRoom { get; set; }
         public int RoomNumber { get; set; }
         public DateTime CheckIn { get; set; }

@@ -22,6 +22,9 @@ namespace ITEC_WebApp.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Weather>().HasOne(e => e.City).WithOne(e => e.Weather).HasForeignKey<City>(e => e.IdCity);
+            modelBuilder.Entity<Country>().HasOne(e => e.Covid).WithOne(e => e.Country).HasForeignKey<Covid>(e => e.IdCovid);
+
             modelBuilder.Entity<Test>().ToTable("Test");
             modelBuilder.Entity<Test>().ToTable("City");
             modelBuilder.Entity<Test>().ToTable("Country");
