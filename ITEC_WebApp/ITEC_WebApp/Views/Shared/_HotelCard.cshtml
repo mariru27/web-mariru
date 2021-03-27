@@ -8,6 +8,6 @@
         <h5 class="card-title">Hotel have @Model.Stars stars</h5>
         <p class="card-text">Description : @Model.Description </p>
         <p class="card-text">Available rooms : @Model.Rooms.Count() </p>
-        <a href="#" class="btn btn-primary">Details</a>
+        <a asp-action="Rooms" asp-route-id="@Model.IdHotel" class="btn btn-primary">Book a room</a>
     </div>
 </div>

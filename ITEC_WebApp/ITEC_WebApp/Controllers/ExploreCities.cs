@@ -21,5 +21,15 @@ namespace ITEC_WebApp.Controllers
                 ).ToList();
             return View(a);
         }
+
+        public IActionResult Rooms(int id)
+        {
+            var a = _context.Hotel.Where(a => a.IdHotel == id).Join(
+                 _context.Room,
+                 a => a.IdHotel,
+                 b => b.Hotel.IdHotel,
+                 (a, b) => new Hotel { City = a.City, Description = a.Description, IdHotel = a.IdHotel, Name = a.Name, Rooms = a.Rooms, Stars = a.Stars }).ToList();
+            return View();
+        }
     }
 }
