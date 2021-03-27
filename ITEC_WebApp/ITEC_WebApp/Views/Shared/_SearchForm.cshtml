@@ -1,21 +1,20 @@
-﻿@model SearchModel
-
+﻿
 <form asp-action="Search" method="get">
     <div class="input-group">
-        <input asp-for="Country" type="search" class="form-control rounded" placeholder="Country" aria-label="Search" aria-describedby="search-addon" />
+        <input name="Country" type="search" class="form-control rounded" placeholder="Country" aria-label="Search" aria-describedby="search-addon" />
         <br />
-        <input asp-for="City" type="search" class="form-control rounded" placeholder="City" aria-label="Search" aria-describedby="search-addon" />
-        <br />
-
-        <input asp-for="Hotel" type="search" class="form-control rounded" placeholder="Hotel" aria-label="Search" aria-describedby="search-addon" />
+        <input name="City" type="search" class="form-control rounded" placeholder="City" aria-label="Search" aria-describedby="search-addon" />
         <br />
 
-        <input asp-for="CheckIn" class="form-control" type="datetime-local" data-val="true" id="CheckIn" name="CheckIn" value="" />
+        <input name="Hotel" type="search" class="form-control rounded" placeholder="Hotel" aria-label="Search" aria-describedby="search-addon" />
         <br />
 
-        <input asp-for="CheckOut" class="form-control" type="datetime-local" data-val="true"  id="CheckOut" name="CheckOut" value="" />
+        <input name="CheckIn" class="form-control" type="datetime-local" data-val="true" id="CheckIn" value="" />
+        <br />
 
-        <button type="button" class="btn btn-outline-primary">search</button>
+        <input name="CheckOut" class="form-control" type="datetime-local" data-val="true"  id="CheckOut" value="" />
+
+        <button type="submit" class="btn btn-outline-primary">search</button>
     </div>
 
 </form>

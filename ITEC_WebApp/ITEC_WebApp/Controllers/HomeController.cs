@@ -1,5 +1,6 @@
 ﻿using ITEC_WebApp.Data;
 using ITEC_WebApp.Models;
+using ITEC_WebApp.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -20,6 +21,10 @@ namespace ITEC_WebApp.Controllers
             _context = context;
         }
 
+        public IActionResult Search(SearchModel searchModel)
+        {
+            return View();
+        }
         public async Task<IActionResult> Countries()
         {
             var a = _context.Country.Join(_context.Covid,
