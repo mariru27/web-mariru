@@ -1,1 +1,14 @@
-﻿
+﻿@model IEnumerable<City>
+
+@{
+    ViewData["Title"] = "Cities";
+}
+
+<h1>Cities</h1>
+
+
+@foreach (var city in Model)
+{
+    <partial name="_CityCard" model="city" />
+    <br />
+}
