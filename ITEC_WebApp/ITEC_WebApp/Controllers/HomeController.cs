@@ -1,4 +1,5 @@
-﻿using ITEC_WebApp.Models;
+﻿using ITEC_WebApp.Data;
+using ITEC_WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
@@ -8,10 +9,12 @@ namespace ITEC_WebApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ContextITEC _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ContextITEC context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
