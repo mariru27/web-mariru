@@ -74,14 +74,14 @@ namespace ITEC_WebApp.Controllers
 
             }
 
+            return RedirectToAction("Filter", new { searchResults });
 
-            return View();
         }
 
-        public IActionResult Filter()
+        public IActionResult Filter(List<SearchResult> searchResults = null)
         {
 
-            return View();
+            return View(searchResults);
         }
         public async Task<IActionResult> Countries()
         {

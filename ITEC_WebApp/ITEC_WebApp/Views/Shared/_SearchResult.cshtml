@@ -1,0 +1,21 @@
+﻿@model SearchResult
+
+
+<div class="card">
+    <div class="card-header">
+        @Model.Country.Name
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">About @Model.Country.Name Country </h5>
+        <p class="card-text">Details : @Model.Country.Details</p>
+        <p class="card-text">Percentage of vaccinated people for covid is @Model.Country.Covid.ProcentageVaccination %</p>
+        <p class="card-text">City name: @Model.City.Name </p>
+        <p class="card-text">Weather: @Model.City.Weather.Details</p>
+        <p class="card-text">Hotel name: @Model.Hotel.Name</p>
+        <p class="card-text">Hotel have @Model.Hotel.Stars stars</p>
+        <p class="card-text">Room checkin @Model.Room.CheckIn </p>
+        <p class="card-text">Room checkout @Model.Room.CheckOut </p>
+
+        @*<a asp-action="Cities" asp-route-id="@Model.IdCountry" class="btn btn-primary">Find hotel</a>*@
+    </div>
+</div>
