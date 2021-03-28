@@ -1,0 +1,12 @@
+﻿@model List<SearchResult>
+<h1>Filter : </h1>
+
+<partial name="_SearchForm" />
+<br />
+
+@foreach (var res in Model)
+{
+    <partial name="_SearchResult" model="res" />
+    <br />
+}
+

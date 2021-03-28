@@ -23,7 +23,7 @@ namespace ITEC_WebApp.Controllers
             _context = context;
         }
 
-        public IActionResult Search(SearchModel searchModel)
+        public IActionResult Filter(SearchModel searchModel)
         {
             List<Room> rooms = new List<Room>();
             DateTime date = new DateTime();
@@ -74,15 +74,11 @@ namespace ITEC_WebApp.Controllers
 
             }
 
-            return RedirectToAction("Filter", new { searchResults = searchResults });
-
-        }
-
-        public IActionResult Filter(List<SearchResult> searchResults)
-        {
-
             return View(searchResults);
+
         }
+
+
         public async Task<IActionResult> Countries()
         {
             var a = _context.Country.Join(_context.Covid,
