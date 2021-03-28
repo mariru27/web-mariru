@@ -5,9 +5,9 @@
         @Model.Name
     </div>
     <div class="card-body">
-        <h5 class="card-title">About Country @Model.Name</h5>
+        <h5 class="card-title">About @Model.Name Country</h5>
         <p class="card-text">@Model.Details</p>
         <p class="card-text">Percentage of vaccinated people for covid is @Model.Covid.ProcentageVaccination %</p>
-        <a asp-action="Cities" asp-route-id="@Model.IdCountry" class="btn btn-primary">Find hotel</a>
+        <a asp-action="Cities" asp-route-id="@Model.IdCountry" class="btn btn-primary">Explore country</a>
     </div>
 </div>
