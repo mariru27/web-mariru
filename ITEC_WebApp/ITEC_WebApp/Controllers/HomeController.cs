@@ -74,11 +74,11 @@ namespace ITEC_WebApp.Controllers
 
             }
 
-            return RedirectToAction("Filter", new { searchResults });
+            return RedirectToAction("Filter", new { searchResults = searchResults });
 
         }
 
-        public IActionResult Filter(List<SearchResult> searchResults = null)
+        public IActionResult Filter(List<SearchResult> searchResults)
         {
 
             return View(searchResults);
