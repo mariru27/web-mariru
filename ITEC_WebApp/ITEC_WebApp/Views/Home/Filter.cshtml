@@ -4,5 +4,9 @@
 <partial name="_SearchForm" />
 <br />
 
-
+@foreach(var res in Model)
+{
+    <partial name="_SearchResult" model="res"/>
+    <br />
+}
 
