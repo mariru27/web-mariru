@@ -14,7 +14,7 @@ Concursul se desfășoară sub forma a șase probe: Algoritmică, AI Development
 
 # Application
 
-Homa page 
+Home page 
 
 ![image](https://user-images.githubusercontent.com/46792157/112751375-5e221f80-8fd6-11eb-895f-35f6be01daab.png)
 
